@@ -441,3 +441,60 @@ document.querySelectorAll('.ach-card').forEach(card => {
   });
   card.addEventListener('mouseleave', () => { card.style.boxShadow = ''; });
 });
+
+/* ═══════════════════════════════════════
+   BACKGROUND MUSIC TOGGLE
+═══════════════════════════════════════ */
+const musicToggle = document.getElementById('music-toggle');
+const bgMusic = document.getElementById('bg-music');
+const iconPlay = musicToggle.querySelector('.icon-play');
+const iconPause = musicToggle.querySelector('.icon-pause');
+
+if (musicToggle && bgMusic) {
+  // Initialize volumes
+  bgMusic.volume = 0.5;
+
+  // Keep UI completely in sync with actual audio state
+  bgMusic.addEventListener('play', () => {
+    iconPlay.style.display = 'none';
+    iconPause.style.display = 'block';
+  });
+
+  bgMusic.addEventListener('pause', () => {
+    iconPlay.style.display = 'block';
+    iconPause.style.display = 'none';
+  });
+
+  // Click toggles state
+  musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (bgMusic.paused) {
+      bgMusic.play().catch(err => console.log('Play error:', err));
+    } else {
+      bgMusic.pause();
+    }
+  });
+
+  // Autoplay on first interaction
+  const startAudioOnInteract = () => {
+    if (bgMusic.paused) {
+      bgMusic.play().then(() => {
+        // Only remove listeners if play is successful
+        document.removeEventListener('click', startAudioOnInteract);
+        document.removeEventListener('keydown', startAudioOnInteract);
+        document.removeEventListener('touchstart', startAudioOnInteract);
+      }).catch(err => {
+        console.log('Autoplay prevented, waiting for next interaction.', err);
+      });
+    } else {
+      document.removeEventListener('click', startAudioOnInteract);
+      document.removeEventListener('keydown', startAudioOnInteract);
+      document.removeEventListener('touchstart', startAudioOnInteract);
+    }
+  };
+
+  document.addEventListener('click', startAudioOnInteract);
+  document.addEventListener('keydown', startAudioOnInteract);
+  document.addEventListener('touchstart', startAudioOnInteract);
+}
+

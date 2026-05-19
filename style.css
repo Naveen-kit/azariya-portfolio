@@ -1494,3 +1494,51 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* ═══════════════════════════════════════
+   MUSIC TOGGLE BUTTON
+═══════════════════════════════════════ */
+.music-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(4, 6, 15, 0.6);
+  border: 1px solid var(--dim);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  /* Use auto pointer events so it's clickable even if body has cursor: none */
+  pointer-events: auto;
+}
+/* We use cursor:none on body, so maybe we want to keep it or allow default cursor on buttons */
+.music-toggle:hover {
+  border-color: var(--p1);
+  box-shadow: 0 0 20px rgba(255,0,85,0.4);
+  color: var(--p1);
+  transform: scale(1.1);
+}
+.music-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+@media (max-width: 700px) {
+  .music-toggle {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  .music-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+}

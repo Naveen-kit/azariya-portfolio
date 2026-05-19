@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>AZARIYA ROBERTSON — Creative Designer & Developer</title>
+<meta name="description" content="Azariya Robertson — Creative Designer & Developer. Neon. Cyber. Immersive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SVG GRADIENT DEFS -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="skillGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff0055"/>
+      <stop offset="50%" stop-color="#00ffcc"/>
+      <stop offset="100%" stop-color="#7700ff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="cur-trail-wrap"></div>
+
+<!-- BACKGROUND LAYERS -->
+<canvas id="gl-canvas"></canvas>
+<div class="hud-grid" aria-hidden="true"></div>
+<div class="noise-fx" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- HUD CORNERS -->
+<div class="hud-corner hud-tl" aria-hidden="true">
+  <svg viewBox="0 0 60 60" fill="none">
+    <polyline points="0,30 0,0 30,0" class="hud-corner-line"/>
+  </svg>
+</div>
+<div class="hud-corner hud-tr" aria-hidden="true">
+  <svg viewBox="0 0 60 60" fill="none">
+    <polyline points="0,30 0,0 30,0" class="hud-corner-line"/>
+  </svg>
+</div>
+<div class="hud-corner hud-bl" aria-hidden="true">
+  <svg viewBox="0 0 60 60" fill="none">
+    <polyline points="0,30 0,0 30,0" class="hud-corner-line"/>
+  </svg>
+</div>
+<div class="hud-corner hud-br" aria-hidden="true">
+  <svg viewBox="0 0 60 60" fill="none">
+    <polyline points="0,30 0,0 30,0" class="hud-corner-line"/>
+  </svg>
+</div>
+
+<!-- HUD STATUS BAR -->
+<div class="hud-statusbar" aria-hidden="true">
+  <div class="hud-sb-item">SYS:ONLINE · RENDER:ACTIVE · FPS:60 · DESIGNER:AZARIYA_ROBERTSON · STATUS:AVAILABLE · BUILD:v2.0.25 · STACK:FIGMA·CSS·JS·REACT · MODE:CREATIVE · SYS:ONLINE · RENDER:ACTIVE · FPS:60</div>
+</div>
+
+<!-- HUD COORDS -->
+<div class="hud-coords" id="hud-coords" aria-hidden="true">
+  X: 000.00<br>Y: 000.00<br>Z: 001.00
+</div>
+
+<!-- LOADER -->
+<div id="loader" role="status" aria-label="Loading portfolio">
+  <div class="ld-bg-lines" aria-hidden="true"></div>
+  <div class="ld-streams" id="ld-streams" aria-hidden="true"></div>
+  <div class="ld-hex-wrap" aria-hidden="true">
+    <svg viewBox="0 0 100 100">
+      <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" class="ld-hex-path"/>
+      <polygon points="50,15 85,32.5 85,67.5 50,85 15,67.5 15,32.5" class="ld-hex-path2"/>
+    </svg>
+    <div class="ld-hex-center">AR</div>
+  </div>
+  <div class="ld-name" data-text="AZARIYA ROBERTSON">AZARIYA ROBERTSON</div>
+  <div class="ld-bar-wrap">
+    <div class="ld-bar-top">
+      <span>LOADING CREATIVE OS</span>
+      <span id="ld-pct-txt">0%</span>
+    </div>
+    <div class="ld-bar-track">
+      <div class="ld-bar-fill" id="ld-bar"></div>
+      <div class="ld-bar-scan"></div>
+    </div>
+  </div>
+  <div class="ld-status" id="ld-status">INITIALIZING CORE SYSTEMS...</div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mob-nav" aria-label="Mobile navigation">
+  <div class="mob-nav-item"><span class="mob-num">01 —</span><a href="#about" class="mob-lbl">About</a></div>
+  <div class="mob-nav-item"><span class="mob-num">02 —</span><a href="#skills" class="mob-lbl">Skills</a></div>
+  <div class="mob-nav-item"><span class="mob-num">03 —</span><a href="#projects" class="mob-lbl">Projects</a></div>
+  <div class="mob-nav-item"><span class="mob-num">04 —</span><a href="#services" class="mob-lbl">Services</a></div>
+  <div class="mob-nav-item"><span class="mob-num">05 —</span><a href="#achievements" class="mob-lbl">Wins</a></div>
+  <div class="mob-nav-item"><span class="mob-num">06 —</span><a href="#contact" class="mob-lbl">Contact</a></div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-brand">
+    <div class="nav-logo-box">
+      <svg viewBox="0 0 36 36" fill="none">
+        <polygon points="18,2 34,11 34,25 18,34 2,25 2,11" class="nav-logo-hex-path"/>
+      </svg>
+      <div class="nav-logo-inner">AR</div>
+    </div>
+    <div class="nav-name">
+      Azariya Robertson
+      <span>Creative Designer & Developer</span>
+    </div>
+  </div>
+  <ul class="nav-links" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-indicator">
+    <div class="nav-ind-dot"></div>
+    <div class="nav-ind-txt">Available for Work</div>
+  </div>
+  <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section id="hero">
+  <!-- Expanding rings -->
+  <div class="hero-rings" aria-hidden="true">
+    <div class="hero-ring hr1"></div>
+    <div class="hero-ring hr2"></div>
+    <div class="hero-ring hr3"></div>
+    <div class="hero-ring hr4"></div>
+    <div class="hero-ring hr5"></div>
+  </div>
+
+  <!-- Profile -->
+  <div class="profile-bubble" role="img" aria-label="Azariya Robertson">
+    <div class="pb-conic" aria-hidden="true"></div>
+    <div class="pb-conic-gap" aria-hidden="true"></div>
+    <div class="pb-ring1" aria-hidden="true"></div>
+    <div class="pb-ring2" aria-hidden="true"></div>
+    <div class="pb-ring3" aria-hidden="true"></div>
+    <div class="pb-ring4" aria-hidden="true"></div>
+    <img src="azariya.png" alt="Azariya Robertson" class="pb-face" style="object-fit: cover;">
+    <div class="pb-status" title="Available">✓</div>
+    <!-- Orbiting planets -->
+    <div class="pb-planet pp1" aria-hidden="true">🎨</div>
+    <div class="pb-planet pp2" aria-hidden="true">💻</div>
+    <div class="pb-planet pp3" aria-hidden="true">⚡</div>
+  </div>
+
+  <div class="hero-chip">
+    <span class="chip-dot" aria-hidden="true"></span>
+    Creative Designer &amp; Developer · Open to Work
+  </div>
+
+  <h1 class="hero-name" data-text="AZARIYA ROBERTSON">
+    <span class="n-first">AZARIYA</span>
+    <span class="n-last">ROBERTSON</span>
+  </h1>
+
+  <div class="hero-sub">
+    <span>UI/UX Design</span>
+    <span class="hero-sub-dot" aria-hidden="true">◆</span>
+    <span>Creative Dev</span>
+    <span class="hero-sub-dot" aria-hidden="true">◆</span>
+    <span>Brand Identity</span>
+    <span class="hero-sub-dot" aria-hidden="true">◆</span>
+    <span>Motion Design</span>
+  </div>
+
+  <div class="hero-tw" aria-live="polite">
+    <span class="tw-ps">$&gt;</span>
+    <span id="az-tw"></span>
+    <span class="tw-cur" aria-hidden="true">_</span>
+  </div>
+
+  <div class="hero-pills">
+    <span class="hpill hpill-1">UI/UX</span>
+    <span class="hpill hpill-2">Web Dev</span>
+    <span class="hpill hpill-3">Branding</span>
+    <span class="hpill hpill-4">Motion</span>
+    <span class="hpill hpill-5">Creative Direction</span>
+  </div>
+
+  <div class="hero-btns">
+    <a href="#projects" class="hbtn hbtn-primary">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      View My Work
+    </a>
+    <a href="#contact" class="hbtn hbtn-ghost">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Let's Collaborate
+    </a>
+  </div>
+
+  <div class="hero-stats" role="list">
+    <div class="hst" role="listitem"><div class="hst-n">5+</div><div class="hst-l">Projects</div></div>
+    <div class="hst-div" aria-hidden="true"></div>
+    <div class="hst" role="listitem"><div class="hst-n">8+</div><div class="hst-l">Tools Mastered</div></div>
+    <div class="hst-div" aria-hidden="true"></div>
+    <div class="hst" role="listitem"><div class="hst-n">∞</div><div class="hst-l">Creative Ideas</div></div>
+    <div class="hst-div" aria-hidden="true"></div>
+    <div class="hst" role="listitem"><div class="hst-n">100%</div><div class="hst-l">Passion</div></div>
+  </div>
+
+  <div class="scroll-ind" aria-hidden="true">
+    <span class="scroll-ind-txt">Scroll</span>
+    <div class="scroll-ind-box"></div>
+  </div>
+</section>
+
+<!-- ════════════════════ ABOUT ════════════════════ -->
+<section id="about" class="sec">
+  <div class="sec-wrap">
+    <div class="about-grid">
+      <div class="rv-l">
+        <div class="sec-lbl">01 · About</div>
+        <h2 class="sec-h">Crafting <span class="acc">Digital<br>Worlds</span></h2>
+        <p class="about-desc" style="margin-top:1.2rem">Azariya Robertson is a <span class="neon-txt">creative designer and developer</span> who bridges the gap between stunning visual design and functional code. Every project is a chance to push creative boundaries.</p>
+        <p class="about-desc">From pixel-perfect UI/UX in Figma, to hand-coded cinematic web experiences — the mission is always the same: <span class="neon-txt">make something unforgettable.</span></p>
+        <div class="spec-wrap">
+          <span class="spec-tag">Figma</span>
+          <span class="spec-tag">Photoshop</span>
+          <span class="spec-tag">Illustrator</span>
+          <span class="spec-tag">After Effects</span>
+          <span class="spec-tag">HTML / CSS</span>
+          <span class="spec-tag">JavaScript</span>
+          <span class="spec-tag">React</span>
+          <span class="spec-tag">Branding</span>
+        </div>
+      </div>
+      <div class="about-cards rv-r">
+        <div class="abt-card">
+          <div class="abt-card-scan" aria-hidden="true"></div>
+          <span class="abt-ico">🎨</span>
+          <div class="abt-title">Visual Design</div>
+          <div class="abt-body">Crafting UI/UX experiences that balance aesthetics with functionality — every pixel placed with intent and purpose.</div>
+        </div>
+        <div class="abt-card">
+          <div class="abt-card-scan" aria-hidden="true"></div>
+          <span class="abt-ico">💻</span>
+          <div class="abt-title">Creative Development</div>
+          <div class="abt-body">Turning designs into living, breathing web experiences with clean, semantic, performance-first code.</div>
+        </div>
+        <div class="abt-card">
+          <div class="abt-card-scan" aria-hidden="true"></div>
+          <span class="abt-ico">⚡</span>
+          <div class="abt-title">Motion & Interaction</div>
+          <div class="abt-body">Bringing interfaces to life with fluid animations and cinematic micro-interactions that feel genuinely premium.</div>
+        </div>
+        <div class="abt-card">
+          <div class="abt-card-scan" aria-hidden="true"></div>
+          <span class="abt-ico">🏷️</span>
+          <div class="abt-title">Brand Identity</div>
+          <div class="abt-body">Building comprehensive visual identities — logos, color systems, typography, guidelines — that make brands unforgettable.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SKILLS ════════════════════ -->
+<section id="skills" class="sec">
+  <div class="sec-wrap">
+    <div class="skills-header rv">
+      <div class="sec-lbl">02 · Skills</div>
+      <h2 class="sec-h" style="text-align:center">My <span class="acc">Arsenal</span></h2>
+      <p class="sec-desc" style="text-align:center;margin:.8rem auto 0">Every tool I wield — from design to code to motion.</p>
+    </div>
+    <div class="skill-cats">
+      <div class="rv">
+        <div class="skill-cat-hd">Design Tools</div>
+        <div class="sk-grid">
+          <div class="sk-card"><span class="sk-ico">🎨</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="85"/></svg><span class="sk-pct">85%</span></div>
+            <span class="sk-nm">Figma</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="85"></div></div><span class="sk-lv">Advanced</span></div>
+          <div class="sk-card"><span class="sk-ico">✏️</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="78"/></svg><span class="sk-pct">78%</span></div>
+            <span class="sk-nm">Illustrator</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="78"></div></div><span class="sk-lv">Proficient</span></div>
+          <div class="sk-card"><span class="sk-ico">🖼️</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="80"/></svg><span class="sk-pct">80%</span></div>
+            <span class="sk-nm">Photoshop</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="80"></div></div><span class="sk-lv">Proficient</span></div>
+          <div class="sk-card"><span class="sk-ico">🎬</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="65"/></svg><span class="sk-pct">65%</span></div>
+            <span class="sk-nm">After Effects</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="65"></div></div><span class="sk-lv">Intermediate</span></div>
+        </div>
+      </div>
+      <div class="rv" style="transition-delay:.12s">
+        <div class="skill-cat-hd">Development</div>
+        <div class="sk-grid">
+          <div class="sk-card"><span class="sk-ico">🌐</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="88"/></svg><span class="sk-pct">88%</span></div>
+            <span class="sk-nm">HTML/CSS</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="88"></div></div><span class="sk-lv">Advanced</span></div>
+          <div class="sk-card"><span class="sk-ico">⚡</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="72"/></svg><span class="sk-pct">72%</span></div>
+            <span class="sk-nm">JavaScript</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="72"></div></div><span class="sk-lv">Intermediate</span></div>
+          <div class="sk-card"><span class="sk-ico">⚛️</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="60"/></svg><span class="sk-pct">60%</span></div>
+            <span class="sk-nm">React</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="60"></div></div><span class="sk-lv">Learning</span></div>
+          <div class="sk-card"><span class="sk-ico">🎭</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="82"/></svg><span class="sk-pct">82%</span></div>
+            <span class="sk-nm">CSS Animation</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="82"></div></div><span class="sk-lv">Advanced</span></div>
+        </div>
+      </div>
+      <div class="rv" style="transition-delay:.24s">
+        <div class="skill-cat-hd">Creative Direction</div>
+        <div class="sk-grid">
+          <div class="sk-card"><span class="sk-ico">🏷️</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="75"/></svg><span class="sk-pct">75%</span></div>
+            <span class="sk-nm">Branding</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="75"></div></div><span class="sk-lv">Proficient</span></div>
+          <div class="sk-card"><span class="sk-ico">📱</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="78"/></svg><span class="sk-pct">78%</span></div>
+            <span class="sk-nm">Mobile UI</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="78"></div></div><span class="sk-lv">Proficient</span></div>
+          <div class="sk-card"><span class="sk-ico">🎯</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="65"/></svg><span class="sk-pct">65%</span></div>
+            <span class="sk-nm">UX Research</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="65"></div></div><span class="sk-lv">Intermediate</span></div>
+          <div class="sk-card"><span class="sk-ico">🌈</span>
+            <div class="sk-ring-wrap"><svg class="sk-ring-svg" viewBox="0 0 44 44"><circle class="sk-ring-track" cx="22" cy="22" r="20"/><circle class="sk-ring-fill" cx="22" cy="22" r="20" data-pct="90"/></svg><span class="sk-pct">90%</span></div>
+            <span class="sk-nm">Color Theory</span><div class="sk-bar-wrap"><div class="sk-bar-fill" data-w="90"></div></div><span class="sk-lv">Expert</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ PROJECTS ════════════════════ -->
+<section id="projects" class="sec" style="background:linear-gradient(180deg,transparent,rgba(4,6,15,.8),transparent)">
+  <div class="sec-wrap">
+    <div class="rv">
+      <div class="sec-lbl">03 · Projects</div>
+      <h2 class="sec-h">Selected <span class="acc">Work</span></h2>
+      <p class="sec-desc">A curated collection — each project a story told through pixels and code.</p>
+    </div>
+    <div class="pj-grid">
+      <div class="pj-card rv" style="transition-delay:.0s">
+        <div class="pj-banner pb-v1"><span class="pj-num">PROJECT_01</span><span class="pj-badge badge-live">Live</span><span class="pj-banner-ico">🎨</span></div>
+        <div class="pj-body">
+          <div class="pj-title">Brand Identity System</div>
+          <div class="pj-desc">Complete visual identity for a tech startup — logo, color system, typography, brand guidelines, and social media kit.</div>
+          <div class="pj-tags"><span class="pj-tag">Figma</span><span class="pj-tag">Illustrator</span><span class="pj-tag">Branding</span></div>
+          <a href="#" class="pj-link">View Project <span class="pj-arr">→</span></a>
+        </div>
+      </div>
+      <div class="pj-card rv" style="transition-delay:.1s">
+        <div class="pj-banner pb-v2"><span class="pj-num">PROJECT_02</span><span class="pj-badge badge-live">Live</span><span class="pj-banner-ico">📱</span></div>
+        <div class="pj-body">
+          <div class="pj-title">Mobile App UI/UX</div>
+          <div class="pj-desc">End-to-end mobile app design — user research, wireframes, prototypes, and final UI in Figma.</div>
+          <div class="pj-tags"><span class="pj-tag">Figma</span><span class="pj-tag">Prototyping</span><span class="pj-tag">UX</span></div>
+          <a href="#" class="pj-link">View Case Study <span class="pj-arr">→</span></a>
+        </div>
+      </div>
+      <div class="pj-card rv" style="transition-delay:.2s">
+        <div class="pj-banner pb-v3"><span class="pj-num">PROJECT_03</span><span class="pj-badge badge-live">Live</span><span class="pj-banner-ico">🌐</span></div>
+        <div class="pj-body">
+          <div class="pj-title">Creative Web Portfolio</div>
+          <div class="pj-desc">Custom-coded portfolio with cinematic animations, smooth scrolling, and a pixel-perfect design system.</div>
+          <div class="pj-tags"><span class="pj-tag">HTML</span><span class="pj-tag">CSS</span><span class="pj-tag">JavaScript</span></div>
+          <a href="#" class="pj-link">View Live <span class="pj-arr">→</span></a>
+        </div>
+      </div>
+      <div class="pj-card rv" style="transition-delay:.3s">
+        <div class="pj-banner pb-v4"><span class="pj-num">PROJECT_04</span><span class="pj-badge badge-wip">In Progress</span><span class="pj-banner-ico">⚡</span></div>
+        <div class="pj-body">
+          <div class="pj-title">Motion Design Reel</div>
+          <div class="pj-desc">Collection of motion graphics, animated UI components, and micro-interactions in After Effects and CSS.</div>
+          <div class="pj-tags"><span class="pj-tag">After Effects</span><span class="pj-tag">CSS</span><span class="pj-tag">Motion</span></div>
+          <a href="#" class="pj-link">Coming Soon <span class="pj-arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SERVICES ════════════════════ -->
+<section id="services" class="sec">
+  <div class="sec-wrap">
+    <div class="srv-layout">
+      <div class="rv-l">
+        <div class="sec-lbl">04 · Services</div>
+        <h2 class="sec-h">What I <span class="acc">Offer</span></h2>
+        <p class="sec-desc">End-to-end creative services — from initial concept to final delivery.</p>
+        <div class="srv-list">
+          <div class="srv-item"><div class="srv-ico-box si-a">🎨</div><div><div class="srv-nm">UI/UX Design</div><div class="srv-body">User research, wireframes, prototypes, and pixel-perfect final designs that convert and delight users.</div></div></div>
+          <div class="srv-item"><div class="srv-ico-box si-b">💻</div><div><div class="srv-nm">Web Development</div><div class="srv-body">Custom-coded websites with smooth animations, responsive layouts, and clean modern code.</div></div></div>
+          <div class="srv-item"><div class="srv-ico-box si-c">🏷️</div><div><div class="srv-nm">Brand Identity</div><div class="srv-body">Logo, typography, color systems, and complete brand guidelines that make you unforgettable.</div></div></div>
+          <div class="srv-item"><div class="srv-ico-box si-d">🎬</div><div><div class="srv-nm">Motion & Animation</div><div class="srv-body">Micro-interactions, animated components, and motion design that brings your brand to life.</div></div></div>
+          <div class="srv-item"><div class="srv-ico-box si-e">🌈</div><div><div class="srv-nm">Creative Direction</div><div class="srv-body">Strategic visual direction ensuring every touchpoint of your brand feels cohesive and premium.</div></div></div>
+        </div>
+      </div>
+      <div class="srv-right rv-r">
+        <div class="manifesto-card">
+          <div id="manifesto-particles" aria-hidden="true"></div>
+          <div class="manifesto-glyph">CREATE.<br>SHIP.<br>INSPIRE.</div>
+          <div class="manifesto-lbl">Design Philosophy</div>
+          <div class="manifesto-quote">Every pixel has a purpose. Every interaction tells a story. Design isn't decoration — it's the difference between good and <em style="color:var(--p4);font-style:normal">unforgettable</em>.</div>
+          <div class="manifesto-tags">
+            <span class="hpill hpill-1" style="font-size:.45rem;padding:.28rem .75rem">Design Thinking</span>
+            <span class="hpill hpill-2" style="font-size:.45rem;padding:.28rem .75rem">User First</span>
+            <span class="hpill hpill-3" style="font-size:.45rem;padding:.28rem .75rem">Pixel Perfect</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ JOURNEY ════════════════════ -->
+<section id="journey" class="sec" style="background:linear-gradient(180deg,transparent,rgba(4,6,15,.8),transparent)">
+  <div class="sec-wrap">
+    <div class="rv">
+      <div class="sec-lbl">05 · Journey</div>
+      <h2 class="sec-h">The <span class="acc">Story</span></h2>
+    </div>
+    <div class="tl-wrap rv" style="transition-delay:.15s">
+      <div class="tl-item">
+        <div class="tl-node"></div>
+        <div class="tl-yr">Present</div>
+        <div class="tl-title">Creative Designer & Developer</div>
+        <div class="tl-org">Freelance · Remote</div>
+        <div class="tl-desc">Building visual identities, designing interfaces, and writing code — blending creative direction with technical execution across every project.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-node"></div>
+        <div class="tl-yr">Design Era</div>
+        <div class="tl-title">UI/UX & Branding Mastery</div>
+        <div class="tl-org">Self-Directed · Online Platforms</div>
+        <div class="tl-desc">Deep-dived into Figma, design systems, and user-centered design. Built multiple projects spanning mobile apps, landing pages, and brand identities.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-node"></div>
+        <div class="tl-yr">Dev Era</div>
+        <div class="tl-title">HTML, CSS & JavaScript</div>
+        <div class="tl-org">Independent Projects</div>
+        <div class="tl-desc">Learned to code custom websites from scratch — turning Figma designs into pixel-perfect, animated web experiences with modern CSS and JS.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-node"></div>
+        <div class="tl-yr">Next Chapter</div>
+        <div class="tl-title">React & Full-Stack Creative Apps</div>
+        <div class="tl-org">Ongoing · Leveling Up</div>
+        <div class="tl-desc">Expanding into React, component-driven architecture, and building full-stack creative web applications with backend integrations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ ACHIEVEMENTS ════════════════════ -->
+<section id="achievements" class="sec">
+  <div class="sec-wrap">
+    <div class="rv" style="text-align:center;display:flex;flex-direction:column;align-items:center">
+      <div class="sec-lbl" style="justify-content:center">06 · Achievements</div>
+      <h2 class="sec-h" style="text-align:center">Wins <span class="acc">Unlocked</span></h2>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-card rv" style="--card-top-grad:linear-gradient(90deg,var(--p1),var(--p2));--card-glow:rgba(255,0,85,.12)">
+        <span class="ach-ico">🎨</span><span class="ach-n" data-target="5">0</span><span class="ach-l">Projects Delivered</span>
+      </div>
+      <div class="ach-card rv" style="transition-delay:.08s;--card-top-grad:linear-gradient(90deg,var(--p4),var(--p5));--card-glow:rgba(0,255,204,.1)">
+        <span class="ach-ico">🛠️</span><span class="ach-n" data-target="8">0</span><span class="ach-l">Tools Mastered</span>
+      </div>
+      <div class="ach-card rv" style="transition-delay:.16s;--card-top-grad:linear-gradient(90deg,var(--p5),var(--p1));--card-glow:rgba(119,0,255,.1)">
+        <span class="ach-ico">💡</span><span class="ach-n" data-target="100">0</span><span class="ach-l">% Creative Drive</span>
+      </div>
+      <div class="ach-card rv" style="transition-delay:.24s;--card-top-grad:linear-gradient(90deg,var(--p2),var(--p3));--card-glow:rgba(255,102,0,.1)">
+        <span class="ach-ico">🚀</span><span class="ach-n" data-target="3">0</span><span class="ach-l">Design Systems Built</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ CONTACT ════════════════════ -->
+<section id="contact" class="sec" style="background:linear-gradient(180deg,transparent,rgba(4,6,15,.8))">
+  <div class="sec-wrap">
+    <div class="ct-layout">
+      <div class="rv-l">
+        <div class="sec-lbl">07 · Contact</div>
+        <h2 class="sec-h">Let's <span class="acc">Create<br>Together</span></h2>
+        <p class="sec-desc" style="margin-top:1rem">Have a project in mind? Looking for a creative collaborator? Let's build something remarkable.</p>
+        <div class="ct-note">Currently open to freelance projects, creative collaborations, and internship opportunities. Response time: within 24 hours.</div>
+        <div class="ct-btns">
+          <a href="mailto:azariya@email.com" class="hbtn hbtn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Send Email
+          </a>
+          <a href="#" class="hbtn hbtn-ghost">View Resume</a>
+        </div>
+      </div>
+      <div class="ct-right rv-r">
+        <div class="ct-card"><span class="ct-ico">✉️</span><div><div class="ct-lbl">Email</div><div class="ct-val"><a href="mailto:azariya@email.com">azariya@email.com</a></div></div></div>
+        <div class="ct-card"><span class="ct-ico">🎨</span><div><div class="ct-lbl">Behance</div><div class="ct-val"><a href="#">behance.net/azariyarobertson</a></div></div></div>
+        <div class="ct-card"><span class="ct-ico">💼</span><div><div class="ct-lbl">LinkedIn</div><div class="ct-val"><a href="#">linkedin.com/in/azariyarobertson</a></div></div></div>
+        <div class="ct-card"><span class="ct-ico">🐙</span><div><div class="ct-lbl">GitHub</div><div class="ct-val"><a href="#">github.com/azariyarobertson</a></div></div></div>
+        <div class="ct-card"><span class="ct-ico">📍</span><div><div class="ct-lbl">Status</div><div class="ct-val" style="color:var(--p4)">Open to Work ✓</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand">AZARIYA <span>ROBERTSON</span></div>
+  <div class="ft-note">Designed & built with <em>passion</em> · 2025</div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT — ALL SYSTEMS
+============================================================ -->
+<script src="script.js"></script>
+</body>
+</html>
